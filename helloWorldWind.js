@@ -110,16 +110,19 @@ colladaLoader.load("duck.dae", function (colladaModel) {
 var serviceAddress = "https://neo.gsfc.nasa.gov/wms/wms"; //this is the correct site
 //"https://neo.sci.gsfc.nasa.gov/wms/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0"; //this site cant be reached
 
-var layerName = "MOD_LSTD_CLIM_M";
+var layerName = "MOD_LSTD_CLIM_M"; //this displayes the temperature data but we can find different ones (probably)
 
+/*  */
 var createLayer = function (xmlDom) {
-  var wms = new WorldWind.WmsCapabilities(xmlDom);
-  var wmsLayerCapabilities = wms.getNamedLayer(layerName);
+  var wms = new WorldWind.WmsCapabilities(xmlDom); //created the object
+  var wmsLayerCapabilities = wms.getNamedLayer(layerName); // retrives its capabilities from the file (?)
   var wmsConfig =
-    WorldWind.WmsLayer.formLayerConfiguration(wmsLayerCapabilities);
+    WorldWind.WmsLayer.formLayerConfiguration(wmsLayerCapabilities); //constructs and object
   var wmsLayer = new WorldWind.WmsLayer(wmsConfig);
-  wwd.addLayer(wmsLayer);
+  wwd.addLayer(wmsLayer); //adds the layer (per usual)
 };
+
+//function for handling errors
 
 var logError = function (jqXhr, text, exception) {
   console.log(
@@ -130,4 +133,5 @@ var logError = function (jqXhr, text, exception) {
   );
 };
 
+//here we use jquery for easiness
 $.get(serviceAddress).done(createLayer).fail(logError);
