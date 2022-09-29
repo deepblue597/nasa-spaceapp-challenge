@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="design.css" />
   </head>
   <body>
     <!-- our globe -->
@@ -14,5 +16,83 @@
       type="text/javascript"
     ></script>
     <script src="helloWorldWind.js" type="text/javascript"></script>
+    <script
+      data-main="GoToLocation"
+      src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"
+    ></script>
+
+    <div class="Coordinates">
+      <h3>Travel to your wished location</h3>
+      <form name="coordinates">
+        <input type="text" placeholder="x-coordinate" name="x-axis" />
+        <input type="text" placeholder="y-coordinate" name="y-axis" />
+      </form>
+      <button onclick="changeCoordinates()">Change coordinates</button>
+    </div>
+    <!-- <button onclick="hello()">Search</button>
+    <button onclick="changeLayerName()">change</button> -->
+
+    <div class="imagery services">
+      <h3>Choose a service</h3>
+      <select id="service">
+        <option value="AVHRR_CLIM_W">sea surface temperature</option>
+        <option value="MOD_LSTD_CLIM_M">surface temperature</option>
+        <option value="MODAL2_M_CLD_FR">cloud fraction</option>
+        <option value="MODAL2_M_CLD_OT">cloud thickness</option>
+        <option value="AURA_UVI_CLIM_M">uv index</option>
+      </select>
+      <button onclick="pickImageryService()">Check Service</button>
+    </div>
+
+    <div class="switch layer">
+      <h3>Disable or Enable all layers</h3>
+      <button onclick="disablingLayers()">Disable all layers</button>
+      <button onclick="enablingLayers()">Enable all layers</button>
+    </div>
+
+    <div class="add placemarks">
+      <h3>Add a pin to your wished place</h3>
+      <form name="placemark">
+        <input type="text" placeholder="x-coordinate" name="x-axis" />
+        <input type="text" placeholder="y-coordinate" name="y-axis" />
+        <input type="text" placeholder="name" name="name" />
+      </form>
+      <button onclick="createPlacemark()">Create a placemark</button>
+    </div>
+    <div class="switch placemarks">
+      <button onclick="disableplacemarks()">disable placemarks</button>
+      <button onclick="enableplacemarks()">enable placemarks</button>
+    </div>
+
+    <div class="create shapes">
+      <h3>Create a triangle to your desired location</h3>
+      <form name="pin1">
+        <input type="text" placeholder="x-coordinate" name="x-axis" />
+        <input type="text" placeholder="y-coordinate" name="y-axis" />
+      </form>
+      <form name="pin2">
+        <input type="text" placeholder="x-coordinate" name="x-axis" />
+        <input type="text" placeholder="y-coordinate" name="y-axis" />
+      </form>
+      <form name="pin3">
+        <input type="text" placeholder="x-coordinate" name="x-axis" />
+        <input type="text" placeholder="y-coordinate" name="y-axis" />
+      </form>
+      <button onclick="shapeCreation()">create shape</button>
+    </div>
+
+    <div class="switch shapes">
+      <button onclick="disableShapes()">disable shapes</button>
+      <button onclick="enableShapes()">enable shapes</button>
+    </div>
+
+    <!-- <input type="checkbox" id="vehicle1" name="vehicle1" value="false" />
+    <label for="vehicle1"> I have a bike</label><br />
+    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+    <label for="vehicle2"> I have a car</label><br />
+    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
+    <label for="vehicle3"> I have a boat</label><br />
+
+    <button onclick="layerCreation()">This is hte creation of layer</button> -->
   </body>
 </html>
